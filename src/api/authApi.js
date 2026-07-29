@@ -3,28 +3,28 @@ import axiosClient from "./axiosClient";
 export const authApi = {
   register(registrationData) {
     return axiosClient.post(
-      "/auth/register",
+      "/api/v1/auth/register",
       registrationData,
     );
   },
 
   login(credentials) {
     return axiosClient.post(
-      "/auth/login",
+      "/api/v1/auth/login",
       credentials,
     );
   },
 
   verifyEmail(verificationData) {
     return axiosClient.post(
-      "/auth/verify-email",
+      "/api/v1/auth/verify-email",
       verificationData,
     );
   },
 
   resendVerificationOtp(email) {
     return axiosClient.post(
-      "/auth/resend-verification-otp",
+      "/api/v1/auth/resend-verification-otp",
       {
         email,
       },
@@ -33,7 +33,7 @@ export const authApi = {
 
   forgotPassword(email) {
     return axiosClient.post(
-      "/auth/forgot-password",
+      "/api/v1/auth/forgot-password",
       {
         email,
       },
@@ -42,14 +42,14 @@ export const authApi = {
 
   resetPassword(resetData) {
     return axiosClient.post(
-      "/auth/reset-password",
+      "/api/v1/auth/reset-password",
       resetData,
     );
   },
 
   refreshToken(refreshToken) {
     return axiosClient.post(
-      "/auth/refresh-token",
+      "/api/v1/auth/refresh-token",
       {
         refreshToken,
       },
@@ -58,7 +58,7 @@ export const authApi = {
 
   logout(refreshToken) {
     return axiosClient.post(
-      "/auth/logout",
+      "/api/v1/auth/logout",
       {
         refreshToken,
       },
