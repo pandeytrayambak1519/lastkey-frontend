@@ -2,15 +2,18 @@ export const appConfig = {
   appName: import.meta.env.VITE_APP_NAME || "LastKey",
 
   apiBaseUrl: (() => {
-    const rawUrl =
+    let rawUrl =
       import.meta.env.VITE_API_BASE_URL ||
       "http://localhost:8080/api/v1";
 
-    // Clean trailing slashes if any
-    const cleanUrl = rawUrl.replace(/\/+$/, "");
+    // Clean all trailing slashes
+    rawUrl = rawUrl.trim().replace(/\/+$/, "");
 
-    // Automatically append /api/v1 if it is missing from the URL
-    return cleanUrl.endsWith("/api/v1") ? cleanUrl : `${cleanUrl}/api/v1`;
+    // Ensure it ends with /api/v1 without duplication
+    if (rawUrl.endsWith("/api/v1")) {
+      return rawUrl;
+    }
+    return `${rawUrl}/api/v1`;
   })(),
 
   environment:
