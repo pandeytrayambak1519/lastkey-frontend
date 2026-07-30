@@ -12,16 +12,22 @@ import { ROUTES } from "../../utils/routePaths";
 import { getInitials } from "../../utils/getInitials";
 
 export default function ProfileDropdown({
+  user,
   onClose,
 }) {
   const navigate = useNavigate();
 
-  const { user, logout } = useAuth();
+  const {
+  user: authUser,
+  logout,
+} = useAuth();
+
+const currentUser = user || authUser;
 
   const initials = getInitials(
-    user?.firstName,
-    user?.lastName,
-  );
+  currentUser?.firstName,
+  currentUser?.lastName,
+);
 
   async function handleLogout() {
     await logout();
@@ -64,15 +70,15 @@ export default function ProfileDropdown({
 
           <div className="min-w-0">
             <p className="truncate text-sm font-extrabold text-slate-950">
-              {user?.firstName} {user?.lastName}
+              {currentuser?.firstName} {currentuser?.lastName}
             </p>
 
             <p className="mt-0.5 truncate text-xs text-slate-500">
-              {user?.email}
+              {currentuser?.email}
             </p>
 
             <span className="mt-2 inline-flex rounded-full bg-emerald-100 px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-emerald-700">
-              {user?.emailVerified ? "Verified" : "Verification pending"}
+              {currentuser?.emailVerified ? "Verified" : "Verification pending"}
             </span>
           </div>
         </div>

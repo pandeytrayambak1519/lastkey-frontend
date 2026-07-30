@@ -606,14 +606,15 @@ export default function Topbar({
             </button>
 
             {profileOpen && (
-              <ProfileDropdown
-                onClose={() =>
-                  setProfileOpen(
-                    false,
-                  )
-                }
-              />
-            )}
+  <ProfileDropdown
+    user={user}
+    onClose={() =>
+      setProfileOpen(
+        false,
+      )
+    }
+  />
+)}
           </div>
         </div>
       </div>
