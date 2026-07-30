@@ -176,7 +176,7 @@ export default function ProfileForm({ profile, loading = false, onSubmit }) {
           <Field
             id="firstName"
             label="First name"
-            placeholder="Naved"
+            placeholder="First name"
             icon={UserRound}
             required
             error={errors.firstName?.message}
@@ -185,7 +185,7 @@ export default function ProfileForm({ profile, loading = false, onSubmit }) {
           <Field
             id="lastName"
             label="Last name"
-            placeholder="Alam"
+            placeholder="Last name"
             icon={UserRound}
             required
             error={errors.lastName?.message}

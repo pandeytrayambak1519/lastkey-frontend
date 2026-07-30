@@ -135,7 +135,7 @@ export default function RegisterPage() {
           <FormInput
             label="First name"
             name="firstName"
-            placeholder="Naved"
+            placeholder="Enter first name"
             autoComplete="given-name"
             icon={UserRound}
             error={
@@ -148,7 +148,7 @@ export default function RegisterPage() {
           <FormInput
             label="Last name"
             name="lastName"
-            placeholder="Alam"
+            placeholder="Enter last name"
             autoComplete="family-name"
             icon={UserRound}
             error={

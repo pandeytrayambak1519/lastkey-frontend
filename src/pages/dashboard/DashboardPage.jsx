@@ -87,9 +87,9 @@ const recentDocuments = [
 ];
 
 const nominees = [
-  { id: 1, name: "Aarav Alam", relation: "Brother", initials: "AA", status: "Verified" },
-  { id: 2, name: "Sara Khan", relation: "Sister", initials: "SK", status: "Verified" },
-  { id: 3, name: "Imran Alam", relation: "Father", initials: "IA", status: "Pending" },
+  { id: 1, name: "Sample Nominee", relation: "Brother", initials: "SN", status: "Verified" },
+  { id: 2, name: "Sample Nominee", relation: "Sister", initials: "SN", status: "Verified" },
+  { id: 3, name: "Sample NomineeD", relation: "Father", initials: "SN", status: "Pending" },
 ];
 
 const securityChecklist = [
