@@ -21,6 +21,13 @@ export default defineConfig(
         port: 5173,
         strictPort: true,
         open: false,
+        proxy: {
+          '/api': {
+            target: env.VITE_API_BASE_URL || 'https://lastkey-backend-nllb.onrender.com',
+            changeOrigin: true,
+            secure: true,
+          },
+        },
       },
 
       preview: {

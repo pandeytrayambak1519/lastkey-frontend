@@ -19,6 +19,7 @@ const axiosClient =
         20000,
     ),
 
+    withCredentials: true,
     headers: {
       Accept: "application/json",
     },
@@ -34,6 +35,7 @@ const refreshClient =
         20000,
     ),
 
+    withCredentials: true,
     headers: {
       "Content-Type":
         "application/json",
