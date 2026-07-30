@@ -70,15 +70,15 @@ const currentUser = user || authUser;
 
           <div className="min-w-0">
             <p className="truncate text-sm font-extrabold text-slate-950">
-              {currentuser?.firstName} {currentuser?.lastName}
+              {currentUser?.firstName} {currentUser?.lastName}
             </p>
 
             <p className="mt-0.5 truncate text-xs text-slate-500">
-              {currentuser?.email}
+              {currentUser?.email}
             </p>
 
             <span className="mt-2 inline-flex rounded-full bg-emerald-100 px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-emerald-700">
-              {currentuser?.emailVerified ? "Verified" : "Verification pending"}
+              {currentUser?.emailVerified ? "Verified" : "Verification pending"}
             </span>
           </div>
         </div>
