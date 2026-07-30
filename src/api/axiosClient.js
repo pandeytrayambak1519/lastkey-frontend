@@ -1,5 +1,6 @@
 import axios from "axios";
-import { appConfig } from "./appConfig"; // appConfig import kiya
+// DHYAN DEIN: Agar appConfig kisi aur folder me hai to ye path change kar lena
+import { appConfig } from "../config/appConfig"; 
 import { tokenService } from "../services/tokenService";
 import { ROUTES } from "../utils/routePaths";
 
