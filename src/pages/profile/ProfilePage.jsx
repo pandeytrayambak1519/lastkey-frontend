@@ -19,6 +19,7 @@ import { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 
 import { profileApi } from "../../api/profileApi";
+import { useAuth } from "../../hooks/useAuth";
 import EmailVerificationModal from "../../components/profile/EmailVerificationModal";
 import ProfileForm from "../../components/profile/ProfileForm";
 import Button from "../../components/ui/Button";
@@ -248,6 +249,7 @@ function SupportCard({ icon: Icon, title, description, tone = "violet" }) {
 
 export default function ProfilePage() {
   const queryClient = useQueryClient();
+  const { updateUser } = useAuth();
   const fileInputRef = useRef(null);
   const [verificationModalOpen, setVerificationModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
@@ -279,6 +281,7 @@ export default function ProfilePage() {
     onSuccess: (response) => {
       toast.success("Profile updated successfully.");
       queryClient.setQueryData(["profile"], response.data);
+      updateUser(response.data);
     },
     onError: (error) => {
       toast.error(getErrorMessage(error, "Unable to update your profile."));
@@ -293,7 +296,9 @@ export default function ProfilePage() {
       setPreviewUrl(null);
       setImageError("");
       if (fileInputRef.current) fileInputRef.current.value = "";
-      await queryClient.invalidateQueries({ queryKey: ["profile"] });
+      const latest = (await profileApi.getProfile()).data;
+      queryClient.setQueryData(["profile"], latest);
+      updateUser(latest);
     },
     onError: (error) => {
       toast.error(getErrorMessage(error, "Unable to update profile image."));
@@ -316,7 +321,9 @@ export default function ProfilePage() {
     onSuccess: async () => {
       toast.success("Email verified successfully.");
       setVerificationModalOpen(false);
-      await queryClient.invalidateQueries({ queryKey: ["profile"] });
+      const latest = (await profileApi.getProfile()).data;
+      queryClient.setQueryData(["profile"], latest);
+      updateUser(latest);
     },
     onError: (error) => {
       toast.error(getErrorMessage(error, "Invalid or expired OTP."));
