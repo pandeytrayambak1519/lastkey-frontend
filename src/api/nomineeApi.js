@@ -1,5 +1,18 @@
 import axiosClient from "./axiosClient";
 
+function tryAlternatePaths(
+  primaryRequest,
+  fallbackRequest,
+) {
+  return primaryRequest().catch((error) => {
+    if (error.response?.status === 404) {
+      return fallbackRequest();
+    }
+
+    return Promise.reject(error);
+  });
+}
+
 export const nomineeApi = {
   /**
    * Create a new nominee.
@@ -22,14 +35,22 @@ export const nomineeApi = {
   /**
    * Get one nominee by ID.
    * GET /api/v1/nominees/{nomineeId}
+   * Fallback: GET /api/v1/nominee/{nomineeId}
    */
   getNomineeById(nomineeId) {
     if (!nomineeId) {
       throw new Error("Nominee ID is required.");
     }
 
-    return axiosClient.get(
-      `/nominees/${nomineeId}`,
+    return tryAlternatePaths(
+      () =>
+        axiosClient.get(
+          `/nominees/${nomineeId}`,
+        ),
+      () =>
+        axiosClient.get(
+          `/nominee/${nomineeId}`,
+        ),
     );
   },
 
@@ -129,19 +150,15 @@ export const nomineeApi = {
       throw new Error("Nominee ID is required.");
     }
 
-    const primaryPath =
-      `/nominees/${nomineeId}/assignable-documents`;
-    const fallbackPath =
-      `/nominees/${nomineeId}/documents`;
-
-    return axiosClient.get(primaryPath).catch(
-      (error) => {
-        if (error.response?.status === 404) {
-          return axiosClient.get(fallbackPath);
-        }
-
-        return Promise.reject(error);
-      },
+    return tryAlternatePaths(
+      () =>
+        axiosClient.get(
+          `/nominees/${nomineeId}/assignable-documents`,
+        ),
+      () =>
+        axiosClient.get(
+          `/nominees/${nomineeId}/documents`,
+        ),
     );
   },
 
@@ -211,8 +228,15 @@ export const nomineeApi = {
       throw new Error("Nominee ID is required.");
     }
 
-    return axiosClient.get(
-      `/nominees/${nomineeId}/permissions`,
+    return tryAlternatePaths(
+      () =>
+        axiosClient.get(
+          `/nominees/${nomineeId}/permissions`,
+        ),
+      () =>
+        axiosClient.get(
+          `/nominee/${nomineeId}/permissions`,
+        ),
     );
   },
 
@@ -228,9 +252,17 @@ export const nomineeApi = {
       throw new Error("Nominee ID is required.");
     }
 
-    return axiosClient.patch(
-      `/nominees/${nomineeId}/permissions`,
-      permissionData,
+    return tryAlternatePaths(
+      () =>
+        axiosClient.patch(
+          `/nominees/${nomineeId}/permissions`,
+          permissionData,
+        ),
+      () =>
+        axiosClient.patch(
+          `/nominee/${nomineeId}/permissions`,
+          permissionData,
+        ),
     );
   },
 
