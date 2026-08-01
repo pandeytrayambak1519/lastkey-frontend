@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { useEffect, useMemo, useState } from "react";
+import { dashboardApi } from "../../api/dashboardApi";
 import {
   Activity,
   AlertTriangle,
@@ -66,12 +68,6 @@ const accentMap = {
   },
 };
 
-const dashboardStats = [
-  { id: 1, title: "Protected documents", value: "24", description: "+4 this month", icon: FileText, accent: "violet", progress: 78 },
-  { id: 2, title: "Verified nominees", value: "3", description: "All nominees active", icon: UserRoundCheck, accent: "cyan", progress: 100 },
-  { id: 3, title: "Security score", value: "92%", description: "+8% from last review", icon: ShieldCheck, accent: "emerald", progress: 92 },
-  { id: 4, title: "Pending actions", value: "2", description: "Requires attention", icon: AlertTriangle, accent: "amber", progress: 35 },
-];
 
 const quickActions = [
   { id: 1, title: "Upload document", description: "Add a protected file to your encrypted vault.", icon: CloudUpload, route: ROUTES.DOCUMENT_UPLOAD, accent: "blue" },
@@ -175,12 +171,88 @@ function StatusBadge({ status }) {
 export default function DashboardPage() {
   const { user } = useAuth();
 
+  const [dashboard, setDashboard] = useState(null);
+const [loading, setLoading] = useState(true);
+
+useEffect(() => {
+  console.log("Dashboard useEffect running");
+
+  const loadDashboard = async () => {
+    try {
+      console.log("Calling Dashboard API...");
+
+      const response = await dashboardApi.getOverview();
+
+      console.log("Dashboard Response:", response.data);
+
+      setDashboard(response.data);
+    } catch (error) {
+      console.error("Dashboard API Error:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  loadDashboard();
+}, []);
+
   const userName =
     user?.firstName ||
     user?.first_name ||
     user?.name ||
     (user?.email ? user.email.split("@")[0] : "Guest");
 
+    const dashboardStats = [
+  {
+    id: 1,
+    title: "Protected documents",
+    value: dashboard?.statistics?.totalDocuments ?? 0,
+    description: "Stored securely",
+    icon: FileText,
+    accent: "violet",
+    progress: Math.min(
+      (dashboard?.statistics?.totalDocuments ?? 0) * 5,
+      100
+    ),
+  },
+  {
+    id: 2,
+    title: "Verified nominees",
+    value: dashboard?.statistics?.totalNominees ?? 0,
+    description: "Trusted nominees",
+    icon: UserRoundCheck,
+    accent: "cyan",
+    progress: Math.min(
+      (dashboard?.statistics?.totalNominees ?? 0) * 20,
+      100
+    ),
+  },
+  {
+    id: 3,
+    title: "Unread notifications",
+    value: dashboard?.statistics?.unreadNotifications ?? 0,
+    description: "Need attention",
+    icon: ShieldCheck,
+    accent: "emerald",
+    progress: Math.min(
+      (dashboard?.statistics?.unreadNotifications ?? 0) * 20,
+      100
+    ),
+  },
+  {
+    id: 4,
+    title: "Active emergencies",
+    value: dashboard?.statistics?.activeEmergencies ?? 0,
+    description: "Emergency requests",
+    icon: AlertTriangle,
+    accent: "amber",
+    progress: Math.min(
+      (dashboard?.statistics?.activeEmergencies ?? 0) * 20,
+      100
+    ),
+  },
+];
+    
   return (
     <main className="dashboard-premium min-h-screen bg-[var(--app-background)] text-[var(--text-primary)]">
       <div className="mx-auto w-full max-w-[1680px] px-4 py-5 sm:px-6 sm:py-7 lg:px-8">
@@ -238,15 +310,40 @@ export default function DashboardPage() {
               <div className="mt-8">
                 <div className="flex items-center justify-between text-sm">
                   <span className="font-semibold text-[var(--text-secondary)]">Protection score</span>
-                  <span className="font-black text-emerald-700 dark:text-emerald-300">92%</span>
+                  <span className="font-black text-emerald-700 dark:text-emerald-300">
+                  {dashboard?.statistics?.totalDocuments ?? 0}
+                  </span>
                 </div>
                 <div className="mt-3 h-2.5 overflow-hidden rounded-full border border-[var(--border-primary)] bg-[var(--surface-inner)] p-[2px]">
-                  <div className="h-full w-[92%] rounded-full bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 shadow-[0_0_16px_rgba(16,185,129,0.34)]" />
+                
+                 <div
+                   className="h-full rounded-full bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 shadow-[0_0_16px_rgba(16,185,129,0.34)]"
+                   style={{
+                   width: `${Math.min(
+                   (dashboard?.statistics?.totalDocuments ?? 0) * 5,
+                    100
+                 )}%`,
+                }}
+              />
+
                 </div>
               </div>
 
               <div className="mt-7 grid grid-cols-3 gap-3">
-                {[{ label: "Files", value: "24" }, { label: "Nominees", value: "3" }, { label: "Alerts", value: "0" }].map((item) => (
+                {[
+  {
+    label: "Files",
+    value: dashboard?.statistics?.totalDocuments ?? 0,
+  },
+  {
+    label: "Nominees",
+    value: dashboard?.statistics?.totalNominees ?? 0,
+  },
+  {
+    label: "Alerts",
+    value: dashboard?.statistics?.unreadNotifications ?? 0,
+  },
+].map((item) => (
                   <div key={item.label} className="rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-primary)] p-3 text-center">
                     <p className="text-lg font-black text-[var(--text-primary)]">{item.value}</p>
                     <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--text-subtle)]">{item.label}</p>
