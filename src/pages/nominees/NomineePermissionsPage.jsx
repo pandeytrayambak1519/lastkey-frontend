@@ -300,6 +300,10 @@ export default function NomineePermissionsPage() {
     documentsQuery.isLoading ||
     permissionQuery.isLoading;
 
+    console.log("Nominee Query", nomineeQuery);
+console.log("Documents Query", documentsQuery);
+console.log("Permission Query", permissionQuery);
+
   if (loading) {
     return (
       <div className="px-4 py-8 sm:px-6 lg:px-8">
