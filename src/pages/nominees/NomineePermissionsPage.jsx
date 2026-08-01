@@ -147,9 +147,9 @@ export default function NomineePermissionsPage() {
 
       queryFn: async () => {
         const response =
-          await nomineeApi.getAssignableDocuments(
-            nomineeId,
-          );
+          await nomineeApi.getAssignedDocuments(
+  nomineeId,
+);
 
         return normalizeDocuments(
           response,
@@ -299,17 +299,6 @@ export default function NomineePermissionsPage() {
   nomineeQuery.isLoading ||
   documentsQuery.isLoading ||
   permissionQuery.isLoading;
-
-console.log("Nominee Query", nomineeQuery);
-console.log("Documents Query", documentsQuery);
-console.log("Permission Query", permissionQuery);
-
-console.log("Nominee Error", nomineeQuery.error);
-console.log("Documents Error", documentsQuery.error);
-console.log("Permission Error", permissionQuery.error);
-
-console.log("Documents Response", documentsQuery.error?.response);
-console.log("Permission Response", permissionQuery.error?.response);
 
 if (loading) {
   return (
