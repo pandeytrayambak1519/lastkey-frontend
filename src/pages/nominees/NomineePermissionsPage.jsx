@@ -295,26 +295,32 @@ export default function NomineePermissionsPage() {
       },
     );
 
-  const loading =
-    nomineeQuery.isLoading ||
-    documentsQuery.isLoading ||
-    permissionQuery.isLoading;
+ const loading =
+  nomineeQuery.isLoading ||
+  documentsQuery.isLoading ||
+  permissionQuery.isLoading;
 
-    console.log("Nominee Query", nomineeQuery);
+console.log("Nominee Query", nomineeQuery);
 console.log("Documents Query", documentsQuery);
 console.log("Permission Query", permissionQuery);
 
-  if (loading) {
-    return (
-      <div className="px-4 py-8 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-6xl space-y-6">
-          <LoadingSkeleton className="h-28" />
-          <LoadingSkeleton className="h-[500px]" />
-        </div>
-      </div>
-    );
-  }
+console.log("Nominee Error", nomineeQuery.error);
+console.log("Documents Error", documentsQuery.error);
+console.log("Permission Error", permissionQuery.error);
 
+console.log("Documents Response", documentsQuery.error?.response);
+console.log("Permission Response", permissionQuery.error?.response);
+
+if (loading) {
+  return (
+    <div className="px-4 py-8 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl space-y-6">
+        <LoadingSkeleton className="h-28" />
+        <LoadingSkeleton className="h-[500px]" />
+      </div>
+    </div>
+  );
+}
   if (
     nomineeQuery.isError ||
     documentsQuery.isError ||
