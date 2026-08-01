@@ -147,9 +147,9 @@ export default function NomineePermissionsPage() {
 
       queryFn: async () => {
         const response =
-          await nomineeApi.getAssignedDocuments(
-  nomineeId,
-);
+          await nomineeApi.getAssignableDocuments(
+            nomineeId,
+          );
 
         return normalizeDocuments(
           response,

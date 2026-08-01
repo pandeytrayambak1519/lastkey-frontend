@@ -120,8 +120,35 @@ export const nomineeApi = {
   },
 
   /**
+   * Get assignable documents.
+   * GET /api/v1/nominees/{nomineeId}/assignable-documents
+   * Fallback: GET /api/v1/nominees/{nomineeId}/documents
+   */
+  getAssignableDocuments(nomineeId) {
+    if (!nomineeId) {
+      throw new Error("Nominee ID is required.");
+    }
+
+    const primaryPath =
+      `/nominees/${nomineeId}/assignable-documents`;
+    const fallbackPath =
+      `/nominees/${nomineeId}/documents`;
+
+    return axiosClient.get(primaryPath).catch(
+      (error) => {
+        if (error.response?.status === 404) {
+          return axiosClient.get(fallbackPath);
+        }
+
+        return Promise.reject(error);
+      },
+    );
+  },
+
+  /**
    * Get assigned documents.
    * GET /api/v1/nominees/{nomineeId}/documents
+   * Deprecated: prefer getAssignableDocuments.
    */
   getAssignedDocuments(nomineeId) {
     if (!nomineeId) {
