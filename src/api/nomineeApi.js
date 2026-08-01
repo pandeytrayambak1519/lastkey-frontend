@@ -176,6 +176,38 @@ export const nomineeApi = {
   },
 
   /**
+   * Get nominee permissions.
+   * GET /api/v1/nominees/{nomineeId}/permissions
+   */
+  getNomineePermissions(nomineeId) {
+    if (!nomineeId) {
+      throw new Error("Nominee ID is required.");
+    }
+
+    return axiosClient.get(
+      `/nominees/${nomineeId}/permissions`,
+    );
+  },
+
+  /**
+   * Update nominee permissions.
+   * PATCH /api/v1/nominees/{nomineeId}/permissions
+   */
+  updateNomineePermissions(
+    nomineeId,
+    permissionData,
+  ) {
+    if (!nomineeId) {
+      throw new Error("Nominee ID is required.");
+    }
+
+    return axiosClient.patch(
+      `/nominees/${nomineeId}/permissions`,
+      permissionData,
+    );
+  },
+
+  /**
    * Remove document access.
    * DELETE /api/v1/nominees/{nomineeId}/documents/{documentId}
    */
