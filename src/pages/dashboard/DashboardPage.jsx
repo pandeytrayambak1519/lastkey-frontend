@@ -405,7 +405,23 @@ useEffect(() => {
                   </div>
                 </div>
                 <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
-                  {[{ label: "Uploads", value: "12", accent: "blue" }, { label: "Reviews", value: "7", accent: "violet" }, { label: "Security", value: "5", accent: "emerald" }].map((item) => (
+                  {[
+  {
+    label: "Uploads",
+    value: dashboard?.statistics?.totalDocuments ?? 0,
+    accent: "blue",
+  },
+  {
+    label: "Reviews",
+    value: dashboard?.statistics?.totalNominees ?? 0,
+    accent: "violet",
+  },
+  {
+    label: "Security",
+    value: dashboard?.statistics?.unreadNotifications ?? 0,
+    accent: "emerald",
+  },
+].map((item) => ( 
                     <div key={item.label} className="rounded-2xl border border-[var(--border-primary)] bg-[var(--surface-inner)] p-4">
                       <span className={`block h-2 w-2 rounded-full ${item.accent === "blue" ? "bg-blue-500" : item.accent === "violet" ? "bg-violet-500" : "bg-emerald-500"}`} />
                       <p className="mt-3 text-2xl font-black text-[var(--text-primary)]">{item.value}</p>
