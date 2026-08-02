@@ -108,7 +108,52 @@ Database
 
 # 📸 Screenshots
 
-> Add project screenshots here.
+
+## 📸 Screenshots
+
+### Dashboard
+![Dashboard](assets/screenshots/Screenshot%202026-08-03%20000217.png)
+
+### Documents
+![Documents](assets/screenshots/Screenshot%202026-08-03%20000228.png)
+
+### Nominees
+![Nominees](assets/screenshots/Screenshot%202026-08-03%20000245.png)
+
+### Emergency Access
+![Emergency Access](assets/screenshots/Screenshot%202026-08-03%20000257.png)
+
+### Profile
+![Profile](assets/screenshots/Screenshot%202026-08-03%20000308.png)
+
+### Security Center
+![Security Center](assets/screenshots/Screenshot%202026-08-03%20000322.png)
+
+### Notifications
+![Notifications](assets/screenshots/Screenshot%202026-08-03%20000338.png)
+
+### Settings
+![Settings](assets/screenshots/Screenshot%202026-08-03%20000352.png)
+
+### More Screens
+
+![](assets/screenshots/Screenshot%202026-08-03%20000408.png)
+
+![](assets/screenshots/Screenshot%202026-08-03%20000510.png)
+
+![](assets/screenshots/Screenshot%202026-08-03%20000559.png)
+
+![](assets/screenshots/Screenshot%202026-08-03%20000609.png)
+
+![](assets/screenshots/Screenshot%202026-08-03%20000620.png)
+
+![](assets/screenshots/Screenshot%202026-08-03%20000634.png)
+
+![](assets/screenshots/Screenshot%202026-08-03%20000647.png)
+
+![](assets/screenshots/Screenshot%202026-08-03%20000716.png)
+
+![](assets/screenshots/Screenshot%202026-08-03%20000732.png)
 
 ---
 
