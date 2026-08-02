@@ -1,16 +1,135 @@
-# React + Vite
+# 🔐 LastKey Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A modern and responsive React frontend for **LastKey**, a Secure Digital Legacy Management Platform.
 
-Currently, two official plugins are available:
+## 🌐 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+**Frontend:** https://lastkey-frontend-ten.vercel.app
 
-## React Compiler
+**Backend API:** https://lastkey-backend-nl1b.onrender.com
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the Oxlint configuration
+# 📌 Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+- 🔑 User Authentication (JWT)
+- 👤 User Profile Management
+- 🖼️ Profile Image Upload
+- 📄 Document Management
+- 🔒 Secure API Communication
+- 📱 Fully Responsive UI
+- ⚡ Fast Performance with Vite
+- 🌙 Clean Modern Interface
+
+---
+
+# 🛠 Tech Stack
+
+- React
+- Vite
+- JavaScript
+- Axios
+- React Router DOM
+- CSS3
+- HTML5
+
+---
+
+# 📂 Folder Structure
+
+```
+src/
+ ├── assets/
+ ├── components/
+ ├── pages/
+ ├── services/
+ ├── utils/
+ ├── App.jsx
+ └── main.jsx
+```
+
+---
+
+# 🚀 Installation
+
+Clone the repository
+
+```bash
+git clone https://github.com/pandeytrayambak1519/lastkey-frontend.git
+```
+
+Go into project
+
+```bash
+cd lastkey-frontend
+```
+
+Install dependencies
+
+```bash
+npm install
+```
+
+Run development server
+
+```bash
+npm run dev
+```
+
+Create production build
+
+```bash
+npm run build
+```
+
+---
+
+# 🔗 API
+
+The frontend communicates with the Spring Boot backend using REST APIs.
+
+---
+
+# 📦 Deployment
+
+Frontend is deployed on
+
+- Vercel
+
+Backend is deployed on
+
+- Render
+
+Database
+
+- Neon PostgreSQL
+
+---
+
+# 📸 Screenshots
+
+> Add project screenshots here.
+
+---
+
+# 👨‍💻 Author
+
+**Trayambak Pandey**
+
+GitHub
+
+https://github.com/pandeytrayambak1519
+
+LinkedIn
+
+https://www.linkedin.com/in/trayambakpandey
+
+Email
+
+pandeytrayambak1519@gmail.com
+
+---
+
+# ⭐ If you like this project
+
+Give this repository a ⭐ on GitHub.
