@@ -106,8 +106,6 @@ Database
 
 ---
 
-# 📸 Screenshots
-
 
 ## 📸 Screenshots
 
