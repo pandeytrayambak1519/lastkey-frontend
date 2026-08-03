@@ -109,31 +109,22 @@ Database
 
 ## 📸 Screenshots
 
-### Dashboard
-![Dashboard](assets/screenshots/Screenshot%202026-08-03%20000217.png)
 
-### Documents
-![Documents](assets/screenshots/Screenshot%202026-08-03%20000228.png)
+![](assets/screenshots/Screenshot%202026-08-03%20000217.png)
 
-### Nominees
-![Nominees](assets/screenshots/Screenshot%202026-08-03%20000245.png)
+![](assets/screenshots/Screenshot%202026-08-03%20000228.png)
 
-### Emergency Access
-![Emergency Access](assets/screenshots/Screenshot%202026-08-03%20000257.png)
+![](assets/screenshots/Screenshot%202026-08-03%20000245.png)
 
-### Profile
-![Profile](assets/screenshots/Screenshot%202026-08-03%20000308.png)
+![](assets/screenshots/Screenshot%202026-08-03%20000257.png)
 
-### Security Center
-![Security Center](assets/screenshots/Screenshot%202026-08-03%20000322.png)
+![](assets/screenshots/Screenshot%202026-08-03%20000308.png)
 
-### Notifications
-![Notifications](assets/screenshots/Screenshot%202026-08-03%20000338.png)
+![](assets/screenshots/Screenshot%202026-08-03%20000322.png)
 
-### Settings
-![Settings](assets/screenshots/Screenshot%202026-08-03%20000352.png)
+![](assets/screenshots/Screenshot%202026-08-03%20000338.png)
 
-### More Screens
+![](assets/screenshots/Screenshot%202026-08-03%20000352.png)
 
 ![](assets/screenshots/Screenshot%202026-08-03%20000408.png)
 
